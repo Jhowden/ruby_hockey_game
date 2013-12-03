@@ -1,4 +1,4 @@
-require_relative 'nhl_logic'
+require_relative 'hockey_logic'
 
 describe Action do
   context "#check" do

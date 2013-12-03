@@ -1,4 +1,4 @@
-require_relative 'nhl_game'
+require_relative 'hockey_game'
 
 describe Game do
 

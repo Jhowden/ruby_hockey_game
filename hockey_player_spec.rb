@@ -1,4 +1,4 @@
-require_relative 'nhl_players'
+require_relative 'hockey_player'
 
 describe Center do
   it 'returns a center\'s name and attributes' do
