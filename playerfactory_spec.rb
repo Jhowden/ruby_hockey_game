@@ -49,7 +49,7 @@ describe PlayerFactory do
   context '#distribute_points' do
     it 'creates a valid forward object' do
       player = PlayerFactory.new(Center, 675)
-      Center.stub(:new).and_return(anything)
+      Center.stub(:new).and_return({:name=>"Bobby McGee", :shooting_power=>100, :puck_control=>100, :body_check=>100, :shot_block=>100, :stick_check=>100, :balance=>100})
 
       player.should_receive(:gets).ordered.and_return("Bobby McGee\n")
       player.should_receive(:gets).ordered.and_return("100")
@@ -60,25 +60,25 @@ describe PlayerFactory do
       player.should_receive(:gets).ordered.and_return("100")
       player.should_receive(:gets).ordered.and_return("75")
       
-      expect(player.distribute_points).to eq(Center)
+      expect(player.distribute_points).to eq({:name=>"Bobby McGee", :shooting_power=>100, :puck_control=>100, :body_check=>100, :shot_block=>100, :stick_check=>100, :balance=>100})
     end
 
     it 'creates a valid goalie object' do
       Goalie = double()
       player = PlayerFactory.new(Goalie, 200)
-      Goalie.stub(:new).and_return(anything)
+      Goalie.stub(:new).and_return({name: "Bobby McGee", reflexes: 100, rebound_control: 100})
 
       player.should_receive(:gets).ordered.and_return("Bobby McGee\n")
       player.should_receive(:gets).ordered.and_return("100")
       player.should_receive(:gets).ordered.and_return("100")
       
-      expect(player.distribute_points).to eq(Goalie)
+      expect(player.distribute_points).to eq({name: "Bobby McGee", reflexes: 100, rebound_control: 100})
     end
 
     it 'creates a valid player object' do
       LeftWing = double()
       player = PlayerFactory.new(LeftWing, 600)
-      LeftWing.stub(:new).and_return(anything)
+      LeftWing.stub(:new).and_return({:name=>"Bobby McGee", :shooting_power=>100, :puck_control=>100, :body_check=>100, :shot_block=>100, :stick_check=>100, :balance=>100})
 
       player.should_receive(:gets).ordered.and_return("Bobby McGee\n")
       player.should_receive(:gets).ordered.and_return("100")
@@ -88,7 +88,7 @@ describe PlayerFactory do
       player.should_receive(:gets).ordered.and_return("100")
       player.should_receive(:gets).ordered.and_return("100")
 
-      expect(player.distribute_points).to eq(LeftWing)
+      expect(player.distribute_points).to eq({:name=>"Bobby McGee", :shooting_power=>100, :puck_control=>100, :body_check=>100, :shot_block=>100, :stick_check=>100, :balance=>100})
     end
   end
 end
