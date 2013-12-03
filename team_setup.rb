@@ -1,10 +1,10 @@
 class TeamSetup
 
-	attr_accessor :team
+	attr_accessor :players
 
 	def initialize
-		@team = []
+		@players = {}
 	end
 
-	
+
 end
