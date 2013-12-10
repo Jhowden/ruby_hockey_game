@@ -39,7 +39,7 @@ class PlayerFactory
     else
       PLAYER_ATTRIBUTES.each_with_index do |attribute, index|
         puts "You have #{@remaining_points} points to distribute for #{PLAYER_ATTRIBUTES.count - index} more categories."
-        puts "Points must be less than 100 and cannot be a value greater than the remain points."
+        puts "Assigned points must be 100 or fewer and cannot be a value greater than the remain points."
         puts "How many points for #{attribute}?"
         points = get_points
         @player_attributes[attribute] = points
