@@ -6,7 +6,8 @@ class Game
   def initialize(home_team, away_team)
     @home_team = home_team
     @away_team = away_team
-    @home_net = []
-    @away_net = []
   end
+end
+
+class Puck
 end
