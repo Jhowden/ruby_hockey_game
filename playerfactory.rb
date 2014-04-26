@@ -16,19 +16,22 @@ class PlayerFactory
 
   def distribute_points
     get_name
-    case player_class
-    when Center
+
+    case 
+    when @player_class == Center
       CENTER_ATTRIBUTES.each_with_index do |attribute, index|
         puts "You have #{@remaining_points} points to distribute for #{CENTER_ATTRIBUTES.count - index} more categories."
-        puts "How many for #{attribute}?"
+        puts "Points must be less than 100 and cannot be a value greater than the remain points."
+        puts "How many points for #{attribute}?"
         points = get_points
         @player_attributes[attribute] = points
         @remaining_points -= points
       end
-    when Goalie
+    when @player_class == Goalie
       GOALIE_ATTRIBUTES.each_with_index do |attribute, index|
         puts "You have #{@remaining_points} points to distribute for #{GOALIE_ATTRIBUTES.count - index} more categories."
-        puts "How many for #{attribute}?"
+        puts "Points must be less than 100 and cannot be a value greater than the remain points."
+        puts "How many points for #{attribute}?"
         points = get_points
         @player_attributes[attribute] = points
         @remaining_points -= points
@@ -36,7 +39,8 @@ class PlayerFactory
     else
       PLAYER_ATTRIBUTES.each_with_index do |attribute, index|
         puts "You have #{@remaining_points} points to distribute for #{PLAYER_ATTRIBUTES.count - index} more categories."
-        puts "How many for #{attribute}?"
+        puts "Assigned points must be 100 or fewer and cannot be a value greater than the remain points."
+        puts "How many points for #{attribute}?"
         points = get_points
         @player_attributes[attribute] = points
         @remaining_points -= points
@@ -55,7 +59,7 @@ class PlayerFactory
   end
 
   def get_name
-    puts "What is the players name?"
+    puts "What is the player's name?"
     name = gets.chomp
     @player_attributes[:name] = name
   end
