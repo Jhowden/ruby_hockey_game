@@ -1,3 +1,4 @@
+require_relative 'hockey_game'
 module Action
 
   def self.check(offensive_player, defensive_player)
@@ -33,6 +34,23 @@ module Action
 
   def self.pass(offensive_player, offensive_player2)
     offensive_player2.puck << offensive_player.puck.pop
+  end
+
+
+  def self.faceoff(home_team_center, away_team_center, defensive_goalie)
+    if defensive_goalie.puck.empty?
+      if home_team_center.faceoff > away_team_center.faceoff
+        home_team_center.puck << Puck.new
+      else
+        away_team_center.puck << Puck.new
+      end
+    else
+      if home_team_center.faceoff > away_team_center.faceoff
+        home_team_center.puck << defensive_goalie.puck.pop
+      else
+        away_team_center.puck << defensive_goalie.puck.pop
+      end
+    end
   end
 
   def self.deke(offensive_player)

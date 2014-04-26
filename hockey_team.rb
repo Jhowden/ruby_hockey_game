@@ -1,7 +1,7 @@
 class Team
 
   attr_reader :team_name, :center, :left_wing, :right_wing,
-              :right_defensemen, :left_defensemen, :goalie, :net
+              :right_defensemen, :left_defensemen, :goalie, :goal_net
 
   def initialize(team_name, players)
     @team_name = team_name

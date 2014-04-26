@@ -116,24 +116,37 @@ describe Action do
     end
   end
 
-  context "#deke" do
-    it 'offensive_player continues with the puck' do
-      offensive_player = double(puck: ["puck"])
+  context "#faceoff" do
+    it 'center with higher faceoff value gets pucks' do
+      home_team_center = double(puck: [], faceoff: 70)
+      away_team_center = double(puck: [], faceoff: 65)
+      puck = double()
+      defensive_goalie = double(puck: [puck])
 
-      Action.deke(offensive_player)
-      expect(offensive_player.puck).to eq(["puck"])
+      Action.faceoff(home_team_center, away_team_center, defensive_goalie)
+      expect(home_team_center.puck).to eq([puck])
+      expect(away_team_center.puck).to eq([])
+      expect(defensive_goalie.puck).to eq([])
+    end
+
+    it 'instantiates a new puck object when a goal is scored' do
+      home_team_center = double(puck: [], faceoff: 65)
+      away_team_center = double(puck: [], faceoff: 70)
+      puck = double()
+      defensive_goalie = double(puck: []) 
+      
+      Action.faceoff(home_team_center, away_team_center, defensive_goalie)
+      expect(home_team_center.puck).to eq([])
+      expect(away_team_center.puck).to eq([puck])    
     end
   end
 
-  # context "#shoot" do
-  #   it 'returns a goal' do
-  #     offensive_player = double(puck: ["puck"], shooting_power: 70)
-  #     defensive_player = double(shot_block: 0, puck: [])
-  #     goalie = double(puck: [], reflexes: 65)
+  # context "#deke" do
+  #   it 'offensive_player continues with the puck' do
+  #     offensive_player = double(puck: ["puck"])
 
-  #     expect(Action.shoot(offensive_player, defensive_player, goalie)).to eq("goal")      
-  #     expect(offensive_player.puck).to eq([])
+  #     Action.deke(offensive_player)
+  #     expect(offensive_player.puck).to eq(["puck"])
   #   end
   # end
-
 end
